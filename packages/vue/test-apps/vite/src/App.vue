@@ -58,7 +58,7 @@
   </section>
 
   <section>
-    <gr-date-picker v-model="dateValue"></gr-date-picker>
+    <gr-date-picker v-model="dateValue" :localization="customLocalizationValue"></gr-date-picker>
 
     <p>{{ dateValue }}</p>
   </section>
@@ -98,6 +98,35 @@ export default defineComponent({
     const selectedValues = ref(["option-1", "option-2", "option-6"]);
     const inputValue = ref("input value");
     const dateValue = ref("1986-09-17");
+    const customLocalizationValue = ref({
+      buttonLabel: 'Choose date',
+      placeholder: '',
+      helpText: 'Custom Format: dd-mm-yyyy',
+      selectedDateMessage: 'Selected date is',
+      prevMonthLabel: 'Previous month',
+      nextMonthLabel: 'Next month',
+      monthSelectLabel: 'Month',
+      yearSelectLabel: 'Year',
+      closeLabel: 'Close window',
+      calendarHeading: 'Choose a date',
+      dayNames: ['Niedziela', 'Poniedzialek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'],
+      monthNames: [
+        'styczeń',
+        'luty',
+        'marzec',
+        'kwiecień',
+        'maj',
+        'czerwiec',
+        'lipiec',
+        'sierpień',
+        'wrzesień',
+        'październik',
+        'listopad',
+        'grudzień',
+      ],
+      monthNamesShort: ['Jan2', 'Feb2', 'Mar2', 'Apr2', 'May2', 'Jun2', 'Jul2', 'Aug2', 'Sep2', 'Oct2', 'Nov2', 'Dec2'],
+      locale: 'en-GB',
+    })
 
     const doSomething = () => {
       variant.value = variant.value === "primary" ? "default" : "primary";
@@ -117,6 +146,7 @@ export default defineComponent({
       selectedValues,
       inputValue,
       dateValue,
+      customLocalizationValue,
       doSomething,
       onSelectChange,
       onRadioChange,
